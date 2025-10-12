@@ -534,8 +534,8 @@
             const ctx = canvas.getContext('2d');
             
             // 设置画布尺寸
-            const width = 600;
-            const height = Math.max(400, sortedData.length * 25 + 40);
+            const width = 1000;
+            const height = Math.max(400, Math.ceil(sortedData.length / 10) * 25 + 40);
             canvas.width = width;
             canvas.height = height;
             
@@ -547,13 +547,14 @@
             ctx.fillStyle = '#262626';
             ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif';
             
-            // 绘制股票代码和名称列表
+            // 绘制股票代码列表（一行10个，用空格分隔）
             let y = 30;
-            sortedData.forEach((stock) => {
-                const text = `${stock.code} ${stock.name}`;
+            for (let i = 0; i < sortedData.length; i += 10) {
+                const rowStocks = sortedData.slice(i, i + 10);
+                const text = rowStocks.map(stock => stock.code).join(' ');
                 ctx.fillText(text, 20, y);
                 y += 20;
-            });
+            }
             
             // 转换为图片并下载
             canvas.toBlob(function(blob) {
