@@ -276,7 +276,7 @@
                 return;
             }
 
-            window.location.href = `stocks.html?date=${selectedDate}`;
+            window.open(`stocks.html?date=${selectedDate}`, '_blank');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
