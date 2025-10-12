@@ -557,6 +557,7 @@
             
             // 转换为图片并下载
             canvas.toBlob(function(blob) {
+                const date = new URLSearchParams(window.location.search).get('date') || '数据';
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
