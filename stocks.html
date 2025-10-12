@@ -534,8 +534,8 @@
             const ctx = canvas.getContext('2d');
             
             // 设置画布尺寸
-            const width = 400;
-            const height = Math.max(400, sortedData.length * 25 + 80);
+            const width = 600;
+            const height = Math.max(400, sortedData.length * 25 + 40);
             canvas.width = width;
             canvas.height = height;
             
@@ -547,15 +547,11 @@
             ctx.fillStyle = '#262626';
             ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif';
             
-            // 绘制标题
-            const date = new URLSearchParams(window.location.search).get('date') || '数据';
-            ctx.fillText(`创业板股票代码 - ${date}`, 20, 25);
-            ctx.fillText(`共 ${sortedData.length} 只股票`, 20, 45);
-            
-            // 绘制股票代码列表（只显示代码，一行一个）
-            let y = 70;
+            // 绘制股票代码和名称列表
+            let y = 30;
             sortedData.forEach((stock) => {
-                ctx.fillText(stock.code, 20, y);
+                const text = `${stock.code} ${stock.name}`;
+                ctx.fillText(text, 20, y);
                 y += 20;
             });
             
