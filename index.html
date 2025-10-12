@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创业板股票数据查询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .date-selector {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .info-box {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .info-box p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .disclaimer {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .disclaimer p {
+            color: #856404;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .error-message {
+            background: #fee;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .error-message p {
+            color: #c0392b;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🎯 创业板数据观察站</h1>
+            <p class="subtitle">多维度技术特征数据分析</p>
+
+            <div class="date-selector">
+                <label for="dateSelect">选择数据日期：</label>
+                <select id="dateSelect">
+                    <option value="">正在加载日期...</option>
+                </select>
+            </div>
+
+            <button class="btn" id="viewBtn" onclick="viewData()">查看数据</button>
+
+            <div class="info-box">
+                <h3>📌 使用说明</h3>
+                <p>1. 从下拉框中选择要查看的数据日期<br>
+                   2. 点击"查看数据"按钮进入详情页面<br>
+                   3. 数据每日更新，请选择最新日期</p>
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>⚠️ 免责声明：</strong>本网站仅为数据展示平台，不提供任何投资建议。股市有风险，投资需谨慎。</p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <p>无法加载数据列表，请稍后再试。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let availableDates = [];
+
+        async function loadAvailableDates() {
+            try {
+                const response = await fetch('dates.json');
+                if (!response.ok) throw new Error('加载失败');
+                
+                const data = await response.json();
+                availableDates = data.dates || [];
+                
+                populateDateSelect();
+            } catch (error) {
+                console.error('加载日期列表失败:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('viewBtn').disabled = true;
+            }
+        }
+
+        function populateDateSelect() {
+            const select = document.getElementById('dateSelect');
+            
+            if (availableDates.length === 0) {
+                select.innerHTML = '<option value="">暂无可用数据</option>';
+                document.getElementById('viewBtn').disabled = true;
+                return;
+            }
+
+            availableDates.sort((a, b) => b.date.localeCompare(a.date));
+
+            select.innerHTML = '<option value="">请选择日期...</option>';
+            
+            availableDates.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.date;
+                
+                const date = new Date(item.date);
+                const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+                const weekday = weekdays[date.getDay()];
+                
+                option.textContent = `${item.date} (星期${weekday})`;
+                
+                if (item === availableDates[0]) {
+                    option.textContent += ' 【最新】';
+                }
+                
+                select.appendChild(option);
+            });
+
+            if (availableDates.length > 0) {
+                select.value = availableDates[0].date;
+            }
+
+            document.getElementById('viewBtn').disabled = false;
+        }
+
+        function viewData() {
+            const select = document.getElementById('dateSelect');
+            const selectedDate = select.value;
+
+            if (!selectedDate) {
+                alert('请先选择一个日期');
+                return;
+            }
+
+            window.location.href = `stocks.html?date=${selectedDate}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAvailableDates();
+            
+            document.getElementById('dateSelect').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    viewData();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
