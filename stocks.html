@@ -171,6 +171,34 @@
             font-weight: 500;
         }
 
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #262626;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 500;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: #00c851;
+        }
+
+        .toast.error {
+            background: #ff4444;
+        }
+
         .controls {
             background: white;
             padding: 20px;
@@ -368,12 +396,42 @@
         let stockData = [];
         let filteredData = [];
 
+        function showToast(message, type = 'success') {
+            // 移除现有的 toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            // 创建新的 toast
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            // 显示动画
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // 自动隐藏
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+
         async function loadData() {
             const urlParams = new URLSearchParams(window.location.search);
             const date = urlParams.get('date');
 
             if (!date) {
                 showError('未指定日期参数');
+                showToast('未指定日期参数', 'error');
                 return;
             }
 
@@ -428,15 +486,18 @@
 
         function exportToEastMoney() {
             if (stockData.length === 0) {
-                alert('暂无数据可导出');
+                showToast('暂无数据可导出', 'error');
                 return;
             }
 
             // 获取当前显示的股票数据（经过筛选的）
             const currentData = filteredData.length > 0 ? filteredData : stockData;
             
+            // 按股票代码排序
+            const sortedData = currentData.sort((a, b) => a.code.localeCompare(b.code));
+            
             // 生成股票代码列表，每行一个代码
-            const stockCodes = currentData.map(stock => stock.code).join('\t\n');
+            const stockCodes = sortedData.map(stock => stock.code).join('\n');
             
             // 创建下载链接
             const blob = new Blob([stockCodes], { type: 'text/plain;charset=utf-8' });
@@ -445,7 +506,7 @@
             // 创建下载链接并触发下载
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Alpha100_${new URLSearchParams(window.location.search).get('date') || '数据'}.txt`;
+            a.download = `Alpha100_东财自选股导入文件_${new URLSearchParams(window.location.search).get('date') || '数据'}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -453,25 +514,28 @@
             // 清理URL对象
             URL.revokeObjectURL(url);
             
-            alert('东方财富通文件已下载完成！');
+            showToast('东方财富通文件已下载完成！');
         }
 
         function generateTongHuaShunImage() {
             if (stockData.length === 0) {
-                alert('暂无数据可生成图片');
+                showToast('暂无数据可生成图片', 'error');
                 return;
             }
 
             // 获取当前显示的股票数据
             const currentData = filteredData.length > 0 ? filteredData : stockData;
             
+            // 按股票代码排序
+            const sortedData = currentData.sort((a, b) => a.code.localeCompare(b.code));
+            
             // 创建画布
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             
             // 设置画布尺寸
-            const width = 800;
-            const height = Math.max(600, currentData.length * 30 + 100);
+            const width = 400;
+            const height = Math.max(400, sortedData.length * 25 + 80);
             canvas.width = width;
             canvas.height = height;
             
@@ -481,19 +545,18 @@
             
             // 设置字体和样式
             ctx.fillStyle = '#262626';
-            ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif';
+            ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif';
             
             // 绘制标题
             const date = new URLSearchParams(window.location.search).get('date') || '数据';
-            ctx.fillText(`创业板潜力股数据 - ${date}`, 20, 30);
-            ctx.fillText(`共 ${currentData.length} 只股票`, 20, 55);
+            ctx.fillText(`创业板股票代码 - ${date}`, 20, 25);
+            ctx.fillText(`共 ${sortedData.length} 只股票`, 20, 45);
             
-            // 绘制股票列表
-            let y = 90;
-            currentData.forEach((stock, index) => {
-                const text = `${index + 1}. ${stock.code} ${stock.name} (${stock.industry})`;
-                ctx.fillText(text, 20, y);
-                y += 25;
+            // 绘制股票代码列表（只显示代码，一行一个）
+            let y = 70;
+            sortedData.forEach((stock) => {
+                ctx.fillText(stock.code, 20, y);
+                y += 20;
             });
             
             // 转换为图片并下载
@@ -501,13 +564,13 @@
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `创业板股票_${date}.png`;
+                a.download = `Alpha100_同花顺自选股导入图片_${date}.png`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
                 
-                alert('同花顺可识别图片已生成完成！');
+                showToast('同花顺可识别图片已生成完成！');
             }, 'image/png');
         }
 
