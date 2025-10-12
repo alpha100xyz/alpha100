@@ -406,7 +406,7 @@
             // 创建下载链接并触发下载
             const a = document.createElement('a');
             a.href = url;
-            a.download = `创业板股票_${new URLSearchParams(window.location.search).get('date') || '数据'}.txt`;
+            a.download = `Alpha100_${new URLSearchParams(window.location.search).get('date') || '数据'}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
