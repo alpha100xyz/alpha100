@@ -497,7 +497,7 @@
             const sortedData = currentData.sort((a, b) => a.code.localeCompare(b.code));
             
             // 生成股票代码列表，每行一个代码
-            const stockCodes = sortedData.map(stock => stock.code).join('\n');
+            const stockCodes = sortedData.map(stock => stock.code).join('\t\n');
             
             // 创建下载链接
             const blob = new Blob([stockCodes], { type: 'text/plain;charset=utf-8' });
