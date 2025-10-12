@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>创业板股票数据查询</title>
+    <title>创业板潜力股观察 - 每日100只左右</title>
     <style>
         * {
             margin: 0;
@@ -13,12 +13,13 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #fafafa;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            color: #262626;
         }
 
         .container {
@@ -28,23 +29,26 @@
 
         .card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #f0f0f0;
         }
 
         h1 {
-            color: #333;
+            color: #262626;
             text-align: center;
             margin-bottom: 10px;
             font-size: 2em;
+            font-weight: 600;
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #8e8e8e;
             margin-bottom: 30px;
             font-size: 0.95em;
+            font-weight: 500;
         }
 
         .date-selector {
@@ -53,7 +57,7 @@
 
         label {
             display: block;
-            color: #333;
+            color: #262626;
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 1.1em;
@@ -61,47 +65,48 @@
 
         select {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
             font-size: 1.1em;
             background: white;
             cursor: pointer;
             transition: all 0.3s;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238e8e8e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 15px center;
+            background-position: right 16px center;
             padding-right: 40px;
         }
 
         select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #0095f6;
+            box-shadow: 0 0 0 3px rgba(0, 149, 246, 0.1);
         }
 
         select:hover {
-            border-color: #667eea;
+            border-color: #0095f6;
         }
 
         .btn {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 16px;
+            background: #0095f6;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1.1em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 149, 246, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 4px 16px rgba(0, 149, 246, 0.4);
+            background: #0084f4;
         }
 
         .btn:active {
@@ -115,50 +120,51 @@
         }
 
         .info-box {
-            background: #f8f9ff;
+            background: #f8f9fa;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-top: 30px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #0095f6;
         }
 
         .info-box h3 {
-            color: #667eea;
+            color: #0095f6;
             margin-bottom: 10px;
             font-size: 1em;
+            font-weight: 600;
         }
 
         .info-box p {
-            color: #666;
+            color: #8e8e8e;
             font-size: 0.9em;
             line-height: 1.6;
         }
 
         .disclaimer {
             background: #fff3cd;
-            border-left: 4px solid #ffc107;
+            border-left: 4px solid #ff6b6b;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 20px;
         }
 
         .disclaimer p {
-            color: #856404;
+            color: #8b4513;
             font-size: 0.85em;
             line-height: 1.6;
         }
 
         .error-message {
             background: #fee;
-            border-left: 4px solid #e74c3c;
+            border-left: 4px solid #ff6b6b;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 20px;
             display: none;
         }
 
         .error-message p {
-            color: #c0392b;
+            color: #d63031;
             font-size: 0.9em;
         }
 
@@ -176,8 +182,8 @@
 <body>
     <div class="container">
         <div class="card">
-            <h1>🎯 创业板数据观察站</h1>
-            <p class="subtitle">多维度技术特征数据分析</p>
+            <h1>📈 创业板潜力股观察站</h1>
+            <p class="subtitle">每日100只左右，缩小范围，提高效率！</p>
 
             <div class="date-selector">
                 <label for="dateSelect">选择数据日期：</label>
@@ -189,14 +195,14 @@
             <button class="btn" id="viewBtn" onclick="viewData()">查看数据</button>
 
             <div class="info-box">
-                <h3>📌 使用说明</h3>
-                <p>1. 从下拉框中选择要查看的数据日期<br>
-                   2. 点击"查看数据"按钮进入详情页面<br>
-                   3. 数据每日更新，请选择最新日期</p>
+                <h3>💡 平台说明</h3>
+                <p>• 本平台通过智能算法筛选具有潜力的创业板股票<br>
+                   • 数据会在交易日中午(12:30左右)和收盘后(18:00左右)更新<br>
+                   • 所有信息仅供学习研究参考，不构成任何投资建议</p>
             </div>
 
             <div class="disclaimer">
-                <p><strong>⚠️ 免责声明：</strong>本网站仅为数据展示平台，不提供任何投资建议。股市有风险，投资需谨慎。</p>
+                <p><strong>⚠️ 重要提示：</strong>本平台展示的股票信息仅供学习研究参考，不构成投资建议、推荐或诱导。股票市场存在风险，历史数据不代表未来表现。投资者应独立判断，理性决策，风险自担。</p>
             </div>
 
             <div class="error-message" id="errorMessage">
