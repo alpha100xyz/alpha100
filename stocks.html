@@ -111,6 +111,20 @@
             font-size: 0.9em;
         }
 
+        #exportCard {
+            transition: all 0.3s ease;
+        }
+
+        #exportCard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background: #f8f9ff !important;
+        }
+
+        #exportCard:active {
+            transform: translateY(0);
+        }
+
         .controls {
             background: white;
             padding: 20px;
@@ -257,9 +271,9 @@
                 <div class="stat-value" id="totalCount">--</div>
                 <div class="stat-label">数据总量</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value" id="industryCount">--</div>
-                <div class="stat-label">涉及行业</div>
+            <div class="stat-card" id="exportCard" style="cursor: pointer;" onclick="exportToEastMoney()">
+                <div class="stat-value">📥</div>
+                <div class="stat-label">导入到东方财富通</div>
             </div>
         </div>
 
@@ -355,14 +369,52 @@
 
         function updateStats() {
             document.getElementById('totalCount').textContent = stockData.length;
-            const industries = new Set(stockData.map(s => s.industry));
-            document.getElementById('industryCount').textContent = industries.size;
             
             const filter = document.getElementById('industryFilter');
+            const industries = new Set(stockData.map(s => s.industry));
             filter.innerHTML = '<option value="all">全部行业</option>';
             Array.from(industries).sort().forEach(ind => {
                 filter.innerHTML += `<option value="${ind}">${ind}</option>`;
             });
+        }
+
+        function exportToEastMoney() {
+            if (stockData.length === 0) {
+                alert('暂无数据可导出');
+                return;
+            }
+
+            // 获取当前显示的股票数据（经过筛选的）
+            const currentData = filteredData.length > 0 ? filteredData : stockData;
+            
+            // 生成股票代码列表，每行一个代码
+            const stockCodes = currentData.map(stock => stock.code).join('\n');
+            
+            // 创建下载链接
+            const blob = new Blob([stockCodes], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            // 创建下载链接并触发下载
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `创业板股票_${new URLSearchParams(window.location.search).get('date') || '数据'}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // 清理URL对象
+            URL.revokeObjectURL(url);
+            
+            // 显示成功提示
+            const exportCard = document.getElementById('exportCard');
+            const originalContent = exportCard.innerHTML;
+            exportCard.innerHTML = '<div class="stat-value">✓</div><div class="stat-label">导出成功</div>';
+            exportCard.style.background = '#e8f5e8';
+            
+            setTimeout(() => {
+                exportCard.innerHTML = originalContent;
+                exportCard.style.background = '';
+            }, 2000);
         }
 
         function applyFilters() {
