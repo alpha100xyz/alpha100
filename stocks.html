@@ -348,7 +348,7 @@
                 const data = await response.json();
                 stockData = data.stocks || [];
                 
-                document.getElementById('calcTime').textContent = data.calcTime || date;
+                // calcTime 元素已被移除，无需更新
                 document.title = `创业板股票数据 - ${date}`;
                 
                 updateStats();
