@@ -138,6 +138,39 @@
             transform: translateY(0);
         }
 
+        .export-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            color: #262626;
+            width: 100%;
+        }
+
+        .export-btn:hover {
+            background: #e8f4fd;
+            border-color: #0095f6;
+            transform: translateY(-1px);
+        }
+
+        .export-btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            font-size: 1.1em;
+        }
+
+        .btn-text {
+            font-weight: 500;
+        }
+
         .controls {
             background: white;
             padding: 20px;
@@ -299,9 +332,15 @@
                 <div class="stat-value" id="totalCount">--</div>
                 <div class="stat-label">潜力股数量</div>
             </div>
-            <div class="stat-card" id="exportCard" style="cursor: pointer;" onclick="exportToEastMoney()">
-                <div class="stat-value">📥</div>
-                <div class="stat-label">导入到东方财富通</div>
+            <div class="stat-card" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="export-btn" onclick="exportToEastMoney()">
+                    <span class="btn-icon">📝</span>
+                    <span class="btn-text">下载文本(适合东方财富通自选股导入)</span>
+                </button>
+                <button class="export-btn" onclick="generateTongHuaShunImage()">
+                    <span class="btn-icon">📷</span>
+                    <span class="btn-text">下载图片(适合同花顺自选股导入)</span>
+                </button>
             </div>
         </div>
 
@@ -414,16 +453,62 @@
             // 清理URL对象
             URL.revokeObjectURL(url);
             
-            // 显示成功提示
-            const exportCard = document.getElementById('exportCard');
-            const originalContent = exportCard.innerHTML;
-            exportCard.innerHTML = '<div class="stat-value">✓</div><div class="stat-label">导出成功</div>';
-            exportCard.style.background = '#e8f5e8';
+            alert('东方财富通文件已下载完成！');
+        }
+
+        function generateTongHuaShunImage() {
+            if (stockData.length === 0) {
+                alert('暂无数据可生成图片');
+                return;
+            }
+
+            // 获取当前显示的股票数据
+            const currentData = filteredData.length > 0 ? filteredData : stockData;
             
-            setTimeout(() => {
-                exportCard.innerHTML = originalContent;
-                exportCard.style.background = '';
-            }, 2000);
+            // 创建画布
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 设置画布尺寸
+            const width = 800;
+            const height = Math.max(600, currentData.length * 30 + 100);
+            canvas.width = width;
+            canvas.height = height;
+            
+            // 设置背景
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+            
+            // 设置字体和样式
+            ctx.fillStyle = '#262626';
+            ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif';
+            
+            // 绘制标题
+            const date = new URLSearchParams(window.location.search).get('date') || '数据';
+            ctx.fillText(`创业板潜力股数据 - ${date}`, 20, 30);
+            ctx.fillText(`共 ${currentData.length} 只股票`, 20, 55);
+            
+            // 绘制股票列表
+            let y = 90;
+            currentData.forEach((stock, index) => {
+                const text = `${index + 1}. ${stock.code} ${stock.name} (${stock.industry})`;
+                ctx.fillText(text, 20, y);
+                y += 25;
+            });
+            
+            // 转换为图片并下载
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `创业板股票_${date}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                alert('同花顺可识别图片已生成完成！');
+            }, 'image/png');
         }
 
         function applyFilters() {
