@@ -388,7 +388,7 @@
             const currentData = filteredData.length > 0 ? filteredData : stockData;
             
             // 生成股票代码列表，每行一个代码
-            const stockCodes = currentData.map(stock => stock.code).join('\n');
+            const stockCodes = currentData.map(stock => stock.code).join('\t\n');
             
             // 创建下载链接
             const blob = new Blob([stockCodes], { type: 'text/plain;charset=utf-8' });
