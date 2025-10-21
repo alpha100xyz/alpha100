@@ -285,7 +285,12 @@
                 return;
             }
 
-            window.open(`stocks.html?date=${selectedDate}`, '_blank');
+            // 获取当前小时的 timestamp（每小时刷新一次）
+            const now = new Date();
+            const currentHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours());
+            const timestamp = Math.floor(currentHour.getTime() / 1000);
+
+            window.open(`stocks.html?date=${selectedDate}&ts=${timestamp}`, '_blank');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
