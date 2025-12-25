@@ -1,0 +1,636 @@
+{
+  "calcTime": "2025-12-25 12:06",
+  "calcDate": "2025-12-25",
+  "stocks": [
+    {
+      "code": "300029",
+      "name": "*ST天龙",
+      "industry": "光伏设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300034",
+      "name": "钢研高纳",
+      "industry": "有色金属",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300045",
+      "name": "华力创通",
+      "industry": "计算机设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300093",
+      "name": "*ST金刚",
+      "industry": "光伏设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300101",
+      "name": "振芯科技",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300102",
+      "name": "乾照光电",
+      "industry": "光学光电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300106",
+      "name": "西部牧业",
+      "industry": "食品饮料",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300118",
+      "name": "东方日升",
+      "industry": "光伏设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300123",
+      "name": "亚光科技",
+      "industry": "船舶制造",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300129",
+      "name": "泰胜风能",
+      "industry": "风电设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300131",
+      "name": "英唐智控",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300136",
+      "name": "信维通信",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300137",
+      "name": "先河环保",
+      "industry": "环保行业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300153",
+      "name": "科泰电源",
+      "industry": "电源设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300180",
+      "name": "华峰超纤",
+      "industry": "塑料制品",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300201",
+      "name": "海伦哲",
+      "industry": "工程机械",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300209",
+      "name": "有棵树",
+      "industry": "互联网服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300221",
+      "name": "银禧科技",
+      "industry": "塑料制品",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300240",
+      "name": "飞力达",
+      "industry": "物流行业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300252",
+      "name": "金信诺",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300279",
+      "name": "和晶科技",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300300",
+      "name": "海峡创新",
+      "industry": "互联网服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300337",
+      "name": "银邦股份",
+      "industry": "有色金属",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300342",
+      "name": "天银机电",
+      "industry": "家电行业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300347",
+      "name": "泰格医药",
+      "industry": "医疗服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300399",
+      "name": "天利科技",
+      "industry": "互联网服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300414",
+      "name": "中光防雷",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300435",
+      "name": "中泰股份",
+      "industry": "燃气",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300438",
+      "name": "鹏辉能源",
+      "industry": "电池",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300445",
+      "name": "康斯特",
+      "industry": "仪器仪表",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300455",
+      "name": "航天智装",
+      "industry": "计算机设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300475",
+      "name": "香农芯创",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300489",
+      "name": "光智科技",
+      "industry": "光学光电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300502",
+      "name": "新易盛",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300506",
+      "name": "*ST名家",
+      "industry": "装修装饰",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300516",
+      "name": "久之洋",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300553",
+      "name": "集智股份",
+      "industry": "仪器仪表",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300555",
+      "name": "ST路通",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300557",
+      "name": "理工光科",
+      "industry": "仪器仪表",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300572",
+      "name": "安车检测",
+      "industry": "专业服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300593",
+      "name": "新雷能",
+      "industry": "电源设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300602",
+      "name": "飞荣达",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300626",
+      "name": "华瑞股份",
+      "industry": "电机",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300660",
+      "name": "江苏雷利",
+      "industry": "电机",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300668",
+      "name": "杰恩设计",
+      "industry": "工程咨询服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300684",
+      "name": "中石科技",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300701",
+      "name": "森霸传感",
+      "industry": "光学光电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300710",
+      "name": "万隆光电",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300719",
+      "name": "安达维尔",
+      "industry": "航天航空",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300720",
+      "name": "海川智能",
+      "industry": "仪器仪表",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300726",
+      "name": "宏达电子",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300731",
+      "name": "科创新源",
+      "industry": "橡胶制品",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300749",
+      "name": "顶固集创",
+      "industry": "装修建材",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300751",
+      "name": "迈为股份",
+      "industry": "光伏设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300762",
+      "name": "上海瀚讯",
+      "industry": "通信设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300765",
+      "name": "新诺威",
+      "industry": "食品饮料",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300772",
+      "name": "运达股份",
+      "industry": "风电设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300779",
+      "name": "惠城环保",
+      "industry": "环保行业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300791",
+      "name": "仙乐健康",
+      "industry": "食品饮料",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300807",
+      "name": "天迈科技",
+      "industry": "计算机设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300814",
+      "name": "中富电路",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300819",
+      "name": "聚杰微纤",
+      "industry": "纺织服装",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300835",
+      "name": "龙磁科技",
+      "industry": "小金属",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300838",
+      "name": "浙江力诺",
+      "industry": "仪器仪表",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300855",
+      "name": "图南股份",
+      "industry": "有色金属",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300868",
+      "name": "杰美特",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300876",
+      "name": "蒙泰高新",
+      "industry": "化纤行业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300883",
+      "name": "龙利得",
+      "industry": "造纸印刷",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300887",
+      "name": "谱尼测试",
+      "industry": "专业服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300916",
+      "name": "朗特智能",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300920",
+      "name": "润阳科技",
+      "industry": "塑料制品",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300937",
+      "name": "药易购",
+      "industry": "医药商业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300938",
+      "name": "信测标准",
+      "industry": "专业服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300952",
+      "name": "恒辉安防",
+      "industry": "纺织服装",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300960",
+      "name": "通业科技",
+      "industry": "交运设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300970",
+      "name": "华绿生物",
+      "industry": "农牧饲渔",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300972",
+      "name": "万辰集团",
+      "industry": "农牧饲渔",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "300973",
+      "name": "立高食品",
+      "industry": "食品饮料",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301017",
+      "name": "漱玉平民",
+      "industry": "医药商业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301023",
+      "name": "奕帆传动",
+      "industry": "电机",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301026",
+      "name": "浩通科技",
+      "industry": "小金属",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301042",
+      "name": "安联锐视",
+      "industry": "计算机设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301057",
+      "name": "汇隆新材",
+      "industry": "化纤行业",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301062",
+      "name": "上海艾录",
+      "industry": "包装材料",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301066",
+      "name": "万事利",
+      "industry": "纺织服装",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301168",
+      "name": "通灵股份",
+      "industry": "光伏设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301182",
+      "name": "凯旺科技",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301217",
+      "name": "铜冠铜箔",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301226",
+      "name": "祥明智能",
+      "industry": "电机",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301232",
+      "name": "飞沃科技",
+      "industry": "风电设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301280",
+      "name": "珠城科技",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301293",
+      "name": "三博脑科",
+      "industry": "医疗服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301296",
+      "name": "新巨丰",
+      "industry": "包装材料",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301306",
+      "name": "西测测试",
+      "industry": "专业服务",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301323",
+      "name": "新莱福",
+      "industry": "塑料制品",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301355",
+      "name": "南王科技",
+      "industry": "造纸印刷",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301387",
+      "name": "光大同创",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301456",
+      "name": "盘古智能",
+      "industry": "风电设备",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301459",
+      "name": "丰茂股份",
+      "industry": "橡胶制品",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301469",
+      "name": "恒达新材",
+      "industry": "造纸印刷",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301489",
+      "name": "思泉新材",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301517",
+      "name": "陕西华达",
+      "industry": "电子元件",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301522",
+      "name": "上大股份",
+      "industry": "有色金属",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301528",
+      "name": "多浦乐",
+      "industry": "仪器仪表",
+      "calcDate": "2025-12-25"
+    },
+    {
+      "code": "301626",
+      "name": "苏州天脉",
+      "industry": "消费电子",
+      "calcDate": "2025-12-25"
+    }
+  ]
+}
